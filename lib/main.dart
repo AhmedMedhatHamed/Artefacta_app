@@ -1,5 +1,5 @@
+import 'package:artefacta_app/core/routes/app_router.dart';
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
-import 'package:artefacta_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,9 +22,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Artefacta_app',
+      routerConfig: router,
       theme: ThemeData(
         useMaterial3: false,
         appBarTheme: const AppBarTheme(
@@ -34,7 +35,6 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: AppColor.offWhite,
       ),
-      home: SplashView(),
     );
   }
 }

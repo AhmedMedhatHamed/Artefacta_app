@@ -1,6 +1,7 @@
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:artefacta_app/core/utils/app_strings/app_strings.dart';
 import 'package:artefacta_app/core/widgets/custom_bttn.dart';
+import 'package:artefacta_app/features/onboarding/presentation/model_view/onboarding_model.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingView extends StatelessWidget {
@@ -8,6 +9,8 @@ class OnboardingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<OnboardingModel> onBoardingList = [];
+
     return Scaffold(
       backgroundColor: AppColor.offWhite,
       body: Padding(
