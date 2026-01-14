@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'package:artefacta_app/core/utils/app_color/app_color.dart';
+import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
 import 'package:artefacta_app/core/utils/app_strings/app_strings.dart';
-import 'package:artefacta_app/features/onboarding/presentation/view/onboarding_view.dart';
+import 'package:artefacta_app/core/text_styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatefulWidget {
@@ -39,13 +39,11 @@ class _SplashViewState extends State<SplashView>
     _controller.forward();
 
     Timer(const Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => OnboardingView(),
-        ),
-      );
+     customNavigate(context,'/onBoarding');
     });
   }
+
+
 
   @override
   void dispose() {
@@ -67,12 +65,7 @@ class _SplashViewState extends State<SplashView>
               children: [
                 Text(
                   AppStrings.appName,
-                  style: const TextStyle(
-                    color: AppColor.deepOrange,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'Pacifico',
-                    fontSize: 45,
-                  ),
+                  style: CustomTextStyles.pacifico400styles64,
                 ),
                 const SizedBox(height: 8.0),
                 const Text(
