@@ -1,8 +1,8 @@
+import 'package:artefacta_app/core/text_styles/text_styles.dart';
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:artefacta_app/core/utils/app_strings/app_strings.dart';
 import 'package:artefacta_app/features/onboarding/presentation/widgets/custom_page_indicator.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/text_styles/text_styles.dart';
 
 class CustomOnBoarding extends StatelessWidget {
   const CustomOnBoarding({super.key, required this.controller});
