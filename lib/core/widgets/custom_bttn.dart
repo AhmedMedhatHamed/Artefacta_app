@@ -1,3 +1,4 @@
+import 'package:artefacta_app/core/text_styles/text_styles.dart';
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColor.primaryColor,
+        backgroundColor: AppColor.lightOrange,
         minimumSize: Size(343.0, 56.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(10.0),
@@ -24,11 +25,9 @@ class CustomButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyle(
-          fontSize: 18.0,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w500,
+        style: CustomTextStyles.poppins500styles24.copyWith(
           color: Colors.white,
+          fontSize: 18.0,
         ),
       ),
     );

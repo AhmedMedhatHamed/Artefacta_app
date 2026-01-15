@@ -16,7 +16,7 @@ class CustomSmoothIndicator extends StatelessWidget {
       controller: controller,
       count: 3,
       effect: ExpandingDotsEffect(
-        activeDotColor: AppColor.primaryColor,
+        activeDotColor: AppColor.lightOrange,
         dotHeight: 7,
         dotWidth: 10,
       ),
