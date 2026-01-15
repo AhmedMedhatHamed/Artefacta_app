@@ -1,23 +1,17 @@
 import 'package:artefacta_app/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:artefacta_app/features/splash/presentation/views/splash_view.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
-  routes: <RouteBase>[
+  initialLocation: '/',
+  routes: [
     GoRoute(
       path: '/',
-      builder: (BuildContext context, GoRouterState state) {
-        return SplashView();
-      },
-      routes: <RouteBase>[
-        GoRoute(
-          path: '/onBoarding',
-          builder: (BuildContext context, GoRouterState state) {
-            return OnboardingView();
-          },
-        ),
-      ],
+      builder: (context, state) => const SplashView(),
+    ),
+    GoRoute(
+      path: '/onBoarding',
+      builder: (context, state) => const OnboardingView(),
     ),
   ],
 );

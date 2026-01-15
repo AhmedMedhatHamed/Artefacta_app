@@ -23,18 +23,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
       title: 'Artefacta_app',
-      routerConfig: router,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: false,
+        scaffoldBackgroundColor: AppColor.offWhite,
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.black,
           elevation: 0.0,
           systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
-        scaffoldBackgroundColor: AppColor.offWhite,
       ),
+      routerConfig: router,
     );
   }
 }

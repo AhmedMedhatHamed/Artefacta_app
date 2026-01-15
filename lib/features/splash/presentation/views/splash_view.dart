@@ -39,7 +39,7 @@ class _SplashViewState extends State<SplashView>
     _controller.forward();
 
     Timer(const Duration(seconds: 7), () {
-     customNavigate(context,'/onBoarding');
+     customReplacementNavigate(context, '/onBoarding');
     });
   }
 
