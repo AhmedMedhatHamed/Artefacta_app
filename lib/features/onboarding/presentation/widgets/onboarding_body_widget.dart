@@ -1,5 +1,6 @@
 import 'package:artefacta_app/core/text_styles/text_styles.dart';
 import 'package:artefacta_app/core/utils/app_strings/app_strings.dart';
+import 'package:artefacta_app/features/onboarding/data/models/onboarding_model.dart';
 import 'package:flutter/material.dart';
 import 'custom_page_indicator.dart';
 
@@ -23,7 +24,7 @@ class OnboardingBody extends StatelessWidget {
                 width: 343.0,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(AppStrings.onBoarding1),
+                    image: AssetImage(onBoardingData[index].image,),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -32,7 +33,7 @@ class OnboardingBody extends StatelessWidget {
               CustomSmoothIndicator(controller: controller),
               const SizedBox(height: 32.0),
               Text(
-                'Explore The history with\nArtefacta in a smart way',
+                onBoardingData[index].text,
                 style: CustomTextStyles.poppins500styles24,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
@@ -40,7 +41,7 @@ class OnboardingBody extends StatelessWidget {
               ),
               const SizedBox(height: 16.0),
               Text(
-                'Using our app’s history libraries\nyou can find many historical periods',
+                onBoardingData[index].subText,
                 style: CustomTextStyles.poppins300styles16,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
