@@ -1,20 +1,27 @@
 import 'package:artefacta_app/core/text_styles/text_styles.dart';
-import 'package:artefacta_app/core/utils/app_strings/app_strings.dart';
 import 'package:artefacta_app/features/onboarding/data/models/onboarding_model.dart';
 import 'package:flutter/material.dart';
 import 'custom_page_indicator.dart';
 
 class OnboardingBody extends StatelessWidget {
-  const OnboardingBody({super.key, required this.controller});
+  const OnboardingBody({
+    super.key,
+    required this.controller,
+    this.onPageChanged,
+  });
 
   final PageController controller;
+  final void Function(int)? onPageChanged;
+
+  final int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: PageView.builder(
+        onPageChanged: onPageChanged,
         controller: controller,
-        itemCount: 3,
+        itemCount: onBoardingData.length,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           return Column(
@@ -24,7 +31,7 @@ class OnboardingBody extends StatelessWidget {
                 width: 343.0,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(onBoardingData[index].image,),
+                    image: AssetImage(onBoardingData[index].image),
                     fit: BoxFit.fill,
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:artefacta_app/core/text_styles/text_styles.dart';
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
+import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
 import 'package:flutter/material.dart';
 
 class CustomNavBar extends StatelessWidget {
@@ -12,7 +13,9 @@ class CustomNavBar extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          customReplacementNavigate(context, '/signIn',);
+        },
         child: Text(
           'Skip',
           style: CustomTextStyles.pacifico400styles64.copyWith(
