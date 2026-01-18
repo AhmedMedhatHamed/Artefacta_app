@@ -1,6 +1,7 @@
-import 'package:artefacta_app/core/text_styles/text_styles.dart';
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/text_styles/text_styles.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton

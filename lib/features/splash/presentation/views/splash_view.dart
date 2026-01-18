@@ -1,8 +1,9 @@
-import 'dart:async';
 import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
+import 'package:artefacta_app/core/database/cache/cache_helpers.dart';
 import 'package:artefacta_app/core/utils/app_strings/app_strings.dart';
-import 'package:artefacta_app/core/text_styles/text_styles.dart';
+import '../../../../core/utils/text_styles/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -38,9 +39,16 @@ class _SplashViewState extends State<SplashView>
 
     _controller.forward();
 
-    Timer(const Duration(seconds: 7), () {
-     customReplacementNavigate(context, '/onBoarding');
-    });
+    bool isOnBoardingVisited = CacheHelper().getData(key: 'isOnBoardingVisited') ?? false;
+    if(isOnBoardingVisited == true){
+      Timer(const Duration(seconds: 5), () {
+        customReplacementNavigate(context, '/signUp');
+      });
+    }else{
+      Timer(const Duration(seconds: 5), () {
+        customReplacementNavigate(context, '/onBoarding');
+      });
+    }
   }
 
 

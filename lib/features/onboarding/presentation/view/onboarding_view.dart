@@ -15,6 +15,11 @@ class _OnboardingViewState extends State<OnboardingView> {
   int currentIndex = 0;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(

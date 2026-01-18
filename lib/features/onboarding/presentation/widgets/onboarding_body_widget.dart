@@ -1,6 +1,6 @@
-import 'package:artefacta_app/core/text_styles/text_styles.dart';
 import 'package:artefacta_app/features/onboarding/data/models/onboarding_model.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/utils/text_styles/text_styles.dart';
 import 'custom_page_indicator.dart';
 
 class OnboardingBody extends StatelessWidget {
