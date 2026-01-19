@@ -1,3 +1,4 @@
+import 'package:artefacta_app/core/services/service_locator.dart';
 import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
 import 'package:artefacta_app/core/database/cache/cache_helpers.dart';
 import 'package:artefacta_app/core/utils/app_strings/app_strings.dart';
@@ -39,7 +40,7 @@ class _SplashViewState extends State<SplashView>
 
     _controller.forward();
 
-    bool isOnBoardingVisited = CacheHelper().getData(key: 'isOnBoardingVisited') ?? false;
+    bool isOnBoardingVisited =getIt<CacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
     if(isOnBoardingVisited == true){
       Timer(const Duration(seconds: 5), () {
         customReplacementNavigate(context, '/signUp');

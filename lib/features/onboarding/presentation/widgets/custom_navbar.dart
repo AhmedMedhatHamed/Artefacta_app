@@ -1,6 +1,6 @@
-import 'package:artefacta_app/core/database/cache/cache_helpers.dart';
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
+import 'package:artefacta_app/features/onboarding/presentation/view/functions/onboarding_visited.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/utils/text_styles/text_styles.dart';
 
@@ -15,7 +15,7 @@ class CustomNavBar extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: InkWell(
         onTap: () {
-          CacheHelper().saveData(key: 'isOnBoardingVisited', value: true);
+          onBoardingVisited();
           customReplacementNavigate(context, '/signIn',);
         },
         child: Text(

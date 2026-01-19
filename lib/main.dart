@@ -1,5 +1,6 @@
 import 'package:artefacta_app/core/database/cache/cache_helpers.dart';
 import 'package:artefacta_app/core/routes/app_router.dart';
+import 'package:artefacta_app/core/services/service_locator.dart';
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +8,8 @@ import 'package:flutter/services.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
-  await CacheHelper().init();
+  setupServiceLocator();
+  await getIt<CacheHelper>().init();
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
