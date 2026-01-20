@@ -1,8 +1,8 @@
 import 'package:artefacta_app/core/utils/text_styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
-class CustomHaveAccountWidget extends StatelessWidget {
-  const CustomHaveAccountWidget({
+class HaveAccountWidget extends StatelessWidget {
+  const HaveAccountWidget({
     super.key,
     required this.txt1,
     required this.txt2,
