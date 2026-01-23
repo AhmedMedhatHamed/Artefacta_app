@@ -6,16 +6,18 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
-  late TextEditingController? firstNameController = TextEditingController();
-  late TextEditingController? lastNameController = TextEditingController();
-  late TextEditingController? emailController = TextEditingController();
-  late TextEditingController? passwordController = TextEditingController();
+  final TextEditingController? firstNameController = TextEditingController();
+  final TextEditingController? lastNameController = TextEditingController();
+  final TextEditingController? emailController = TextEditingController();
+  final TextEditingController? passwordController = TextEditingController();
 
    String? emailAddress;
    String? password;
    String? firstName;
    String? lastName;
   GlobalKey<FormState> signupFormKey = GlobalKey();
+  bool? isCheckBoxActive = false;
+  bool? isObscure = true;
 
   Future <void> signUpWithEmailAndPassword() async {
     emit(AuthLoadingState());
@@ -36,4 +38,15 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthErrorState(e.toString()));
     }
   }
+
+   void updateStateOfCheckBox(dynamic newValue){
+    isCheckBoxActive = newValue;
+    emit(CheckBoxState());
+  }
+
+  void togglePasswordVisibility() {
+    isObscure = !isObscure!;
+    emit(PasswordVisibilityState());
+  }
+
 }

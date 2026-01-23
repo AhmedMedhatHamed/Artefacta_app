@@ -1,3 +1,4 @@
+import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:artefacta_app/features/auth/presentation/widgets/terms_and%20_condition_widget.dart';
 import 'package:artefacta_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import 'package:artefacta_app/core/widgets/custom_bttn.dart';
@@ -23,7 +24,7 @@ class CustomSignUpForm extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: CustomTextFormField(
-                  onChanged: (value){
+                  onChanged: (value) {
                     authCubit.firstName = value;
                   },
                   controller: authCubit.firstNameController,
@@ -35,7 +36,7 @@ class CustomSignUpForm extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: CustomTextFormField(
-                  onChanged: (value){
+                  onChanged: (value) {
                     authCubit.lastName = value;
                   },
                   controller: authCubit.lastNameController,
@@ -47,7 +48,7 @@ class CustomSignUpForm extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: CustomTextFormField(
-                  onChanged: (value){
+                  onChanged: (value) {
                     authCubit.emailAddress = value;
                   },
                   controller: authCubit.emailController,
@@ -59,26 +60,43 @@ class CustomSignUpForm extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: CustomTextFormField(
-                  onChanged: (value){
+                  onChanged: (value) {
                     authCubit.password = value;
                   },
                   controller: authCubit.passwordController,
-                  obscureText: true,
+                  obscureText: authCubit.isObscure,
                   labelText: 'Password',
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
                   prefixIcon: const Icon(CupertinoIcons.lock),
-                  suffixIcon: const Icon(CupertinoIcons.eye),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      authCubit.isObscure!
+                          ? CupertinoIcons.eye
+                          : CupertinoIcons.eye_slash_fill,
+                    ),
+                    onPressed: () {
+                      authCubit.togglePasswordVisibility();
+                    },
+                  ),
                 ),
+
               ),
               Row(
                 children: const [CustomCheckbox(), TermsAndConditionWidget()],
               ),
               const SizedBox(height: 80),
               CustomButton(
+                backgroundColor: authCubit.isCheckBoxActive == false
+                    ? Colors.grey
+                    : AppColor.lightOrange,
                 text: 'Sign Up',
                 onPressed: () {
-                  authCubit.signUpWithEmailAndPassword();
+                  if (authCubit.isCheckBoxActive == true) {
+                    if (authCubit.signupFormKey.currentState!.validate()) {
+                      authCubit.signUpWithEmailAndPassword();
+                    }
+                  }
                 },
               ),
             ],

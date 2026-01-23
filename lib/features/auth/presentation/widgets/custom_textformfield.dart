@@ -8,7 +8,6 @@ class CustomTextFormField extends StatelessWidget {
     this.controller,
     this.textInputAction,
     this.keyboardType,
-    this.validator,
     this.labelText,
     this.prefixIcon,
     this.suffixIcon,
@@ -18,7 +17,6 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputAction? textInputAction;
   final TextInputType? keyboardType;
-  final String? Function(String?)? validator;
   final String? labelText;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
@@ -28,7 +26,12 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: onChanged,
-      validator: validator,
+      validator: (value){
+        if(value!.isEmpty){
+          return 'this is required';
+        }
+        return null;
+      },
       controller: controller,
       style: CustomTextStyles.poppins300styles16,
       cursorColor: AppColor.primaryColor,

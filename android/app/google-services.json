@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "185494368459",
+    "project_id": "artefacta-5f5d4",
+    "storage_bucket": "artefacta-5f5d4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185494368459:android:da0d6777ef671fc7f8ab4e",
+        "android_client_info": {
+          "package_name": "com.example.artefacta_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmxptLjPp_yUJQiH5d9n3DJJ8X7r09JLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

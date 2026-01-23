@@ -13,3 +13,8 @@ class AuthErrorState extends AuthState{
   AuthErrorState(this.errorMsg);
 }
 
+class CheckBoxState extends AuthState{}
+class PasswordVisibilityState extends AuthState{}
+
+
+

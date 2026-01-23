@@ -1,5 +1,7 @@
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
+import 'package:artefacta_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomCheckbox extends StatefulWidget {
   const CustomCheckbox({super.key});
@@ -23,6 +25,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
         onChanged: (value) {
           setState(() {
             isActive = value;
+           BlocProvider.of<AuthCubit>(context).updateStateOfCheckBox(value);
           });
         },
       ),
