@@ -13,6 +13,7 @@ class CustomTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.obscureText,
+    this.onChanged,
   });
   final TextEditingController? controller;
   final TextInputAction? textInputAction;
@@ -22,16 +23,18 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool? obscureText;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
+      validator: validator,
       controller: controller,
       style: CustomTextStyles.poppins300styles16,
       cursorColor: AppColor.primaryColor,
       textInputAction: textInputAction ?? TextInputAction.next,
       keyboardType: keyboardType,
       cursorHeight: 14,
-      validator: validator,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
         filled: true,

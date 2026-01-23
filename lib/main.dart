@@ -1,13 +1,20 @@
 import 'package:artefacta_app/core/database/cache/cache_helpers.dart';
-import 'package:artefacta_app/core/routes/app_router.dart';
 import 'package:artefacta_app/core/services/service_locator.dart';
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
+import 'core/utils/app_functions/auth_state_changes.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'app/artefacta_app.dart';
+import 'firebase_options.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  authStateChanges();
   setupServiceLocator();
   await getIt<CacheHelper>().init();
 
@@ -19,27 +26,9 @@ void main() async{
     ),
   );
 
-  runApp(const MyApp());
+  runApp(const Artefacta());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Artefacta_app',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: false,
-        scaffoldBackgroundColor: AppColor.offWhite,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.black,
-          elevation: 0.0,
-          systemOverlayStyle: SystemUiOverlayStyle.light,
-        ),
-      ),
-      routerConfig: router,
-    );
-  }
-}
+
+
