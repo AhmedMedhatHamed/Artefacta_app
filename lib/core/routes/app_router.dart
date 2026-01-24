@@ -1,3 +1,4 @@
+import 'package:artefacta_app/features/home/presentation/view/home_view.dart';
 import 'package:artefacta_app/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:artefacta_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import 'package:artefacta_app/features/splash/presentation/views/splash_view.dart';
@@ -30,6 +31,11 @@ final GoRouter router = GoRouter(
       builder: (context, state) =>  BlocProvider(
         create : (context) => AuthCubit(),
           child: SignUp()),
+    ),
+
+    GoRoute(
+      path: '/homeView',
+      builder: (context, state) =>  HomeView(),
     ),
   ],
 );

@@ -21,7 +21,7 @@ class SignUp extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 152.0),
-                CustomWelcomeTextWidget(text: 'Welcome !'),
+                CustomWelcomeTextWidget(text: 'Welcome!'),
                 SizedBox(height: 30.0),
                 CustomSignUpForm(),
                 SizedBox(height: 16.0),

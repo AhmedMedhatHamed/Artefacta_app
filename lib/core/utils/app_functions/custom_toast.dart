@@ -6,8 +6,8 @@ void customToast() {
   Fluttertoast.showToast(
     msg: 'Account Created Successfully',
     toastLength: Toast.LENGTH_SHORT,
-    gravity: ToastGravity.CENTER,
-    timeInSecForIosWeb: 1,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 2,
     backgroundColor: AppColor.primaryColor,
     textColor: Colors.white,
     fontSize: 16.0,

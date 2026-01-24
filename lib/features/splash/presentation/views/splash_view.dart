@@ -2,6 +2,7 @@ import 'package:artefacta_app/core/services/service_locator.dart';
 import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
 import 'package:artefacta_app/core/database/cache/cache_helpers.dart';
 import 'package:artefacta_app/core/utils/app_strings/app_strings.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../core/utils/text_styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -40,19 +41,22 @@ class _SplashViewState extends State<SplashView>
 
     _controller.forward();
 
-    bool isOnBoardingVisited =getIt<CacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
-    if(isOnBoardingVisited == true){
+    bool isOnBoardingVisited =
+        getIt<CacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
+    FirebaseAuth.instance.currentUser == null
+        ? customReplacementNavigate(context, '/signUp')
+        : customReplacementNavigate(context, '/homeView');
+
+    if (isOnBoardingVisited == true) {
       Timer(const Duration(seconds: 5), () {
         customReplacementNavigate(context, '/signUp');
       });
-    }else{
+    } else {
       Timer(const Duration(seconds: 5), () {
         customReplacementNavigate(context, '/onBoarding');
       });
     }
   }
-
-
 
   @override
   void dispose() {
@@ -79,10 +83,7 @@ class _SplashViewState extends State<SplashView>
                 const SizedBox(height: 8.0),
                 const Text(
                   'History meets marketplace',
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
+                  style: TextStyle(fontSize: 14.0, color: Colors.grey),
                 ),
               ],
             ),

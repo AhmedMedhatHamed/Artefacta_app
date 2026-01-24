@@ -22,7 +22,7 @@ class CustomSignUpForm extends StatelessWidget {
           customShowSnackBar(context, state);
         } else if (state is AuthSuccessState) {
           customToast();
-          customReplacementNavigate(context, '/signIn');
+          customReplacementNavigate(context, '/homeView');
         }
       },
       builder: (context, state) {

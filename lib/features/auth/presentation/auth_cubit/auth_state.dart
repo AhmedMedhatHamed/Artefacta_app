@@ -14,6 +14,7 @@ class AuthErrorState extends AuthState{
 }
 
 class CheckBoxState extends AuthState{}
+
 class PasswordVisibilityState extends AuthState{}
 
 
