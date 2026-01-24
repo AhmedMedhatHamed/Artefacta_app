@@ -1,6 +1,9 @@
-import 'package:artefacta_app/core/utils/app_color/app_color.dart';
+import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
 import 'package:artefacta_app/features/auth/presentation/widgets/terms_and%20_condition_widget.dart';
 import 'package:artefacta_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
+import 'package:artefacta_app/core/utils/app_functions/custom_snackbar.dart';
+import 'package:artefacta_app/core/utils/app_functions/custom_toast.dart';
+import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:artefacta_app/core/widgets/custom_bttn.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,7 +17,14 @@ class CustomSignUpForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is AuthErrorState) {
+          customShowSnackBar(context, state);
+        } else if (state is AuthSuccessState) {
+          customToast();
+          customReplacementNavigate(context, '/signIn');
+        }
+      },
       builder: (context, state) {
         AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Form(
@@ -80,25 +90,27 @@ class CustomSignUpForm extends StatelessWidget {
                     },
                   ),
                 ),
-
               ),
               Row(
                 children: const [CustomCheckbox(), TermsAndConditionWidget()],
               ),
               const SizedBox(height: 80),
-              CustomButton(
-                backgroundColor: authCubit.isCheckBoxActive == false
-                    ? Colors.grey
-                    : AppColor.lightOrange,
-                text: 'Sign Up',
-                onPressed: () {
-                  if (authCubit.isCheckBoxActive == true) {
-                    if (authCubit.signupFormKey.currentState!.validate()) {
-                      authCubit.signUpWithEmailAndPassword();
-                    }
-                  }
-                },
-              ),
+              state is AuthLoadingState
+                  ? CupertinoActivityIndicator(color: AppColor.lightOrange)
+                  : CustomButton(
+                      backgroundColor: authCubit.isCheckBoxActive == false
+                          ? Colors.grey
+                          : AppColor.lightOrange,
+                      text: 'Sign Up',
+                      onPressed: () {
+                        if (authCubit.isCheckBoxActive == true) {
+                          if (authCubit.signupFormKey.currentState!
+                              .validate()) {
+                            authCubit.signUpWithEmailAndPassword();
+                          }
+                        }
+                      },
+                    ),
             ],
           ),
         );
