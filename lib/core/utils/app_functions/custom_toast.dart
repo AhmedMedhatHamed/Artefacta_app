@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 void customToast() {
   Fluttertoast.showToast(
-    msg: 'Account Created Successfully',
+    msg: 'Account Created Successfully!',
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.BOTTOM,
     timeInSecForIosWeb: 2,

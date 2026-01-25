@@ -1,3 +1,4 @@
+import 'package:artefacta_app/features/auth/presentation/view/forget_password_view.dart';
 import 'package:artefacta_app/features/home/presentation/view/home_view.dart';
 import 'package:artefacta_app/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:artefacta_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
@@ -36,6 +37,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/homeView',
       builder: (context, state) =>  HomeView(),
+    ),
+    GoRoute(
+      path: '/forgetPassword',
+      builder: (context, state) =>  ForgetPasswordView(),
     ),
   ],
 );
