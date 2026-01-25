@@ -11,22 +11,22 @@ class AuthCubit extends Cubit<AuthState> {
   final TextEditingController? emailController = TextEditingController();
   final TextEditingController? passwordController = TextEditingController();
 
-   String? emailAddress;
-   String? password;
-   String? firstName;
-   String? lastName;
+  String? emailAddress;
+  String? password;
+  String? firstName;
+  String? lastName;
   GlobalKey<FormState> signupFormKey = GlobalKey();
   bool? isCheckBoxActive = false;
   bool? isObscure = true;
+  GlobalKey<FormState> signInFormKey = GlobalKey();
 
-  Future <void> signUpWithEmailAndPassword() async {
+  Future<void> signUpWithEmailAndPassword() async {
     emit(AuthLoadingState());
     try {
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-            email: emailAddress!,
-            password: password!,
-          );
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailAddress!,
+        password: password!,
+      );
       emit(AuthSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -39,7 +39,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-   void updateStateOfCheckBox(dynamic newValue){
+  void updateStateOfCheckBox(dynamic newValue) {
     isCheckBoxActive = newValue;
     emit(CheckBoxState());
   }
@@ -49,6 +49,20 @@ class AuthCubit extends Cubit<AuthState> {
     emit(PasswordVisibilityState());
   }
 
-
-
+  Future<void> signInWithEmailAndPassword() async {
+    try {
+      emit(AuthLoadingState());
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailAddress!,
+        password: password!,
+      );
+      emit(AuthSuccessState());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        emit(AuthErrorState('User not found'));
+      } else if (e.code == 'wrong-password') {
+        emit(AuthErrorState('Wrong password provided for that user.'));
+      }
+    }
+  }
 }
