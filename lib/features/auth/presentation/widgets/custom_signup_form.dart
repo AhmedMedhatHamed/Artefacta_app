@@ -21,7 +21,7 @@ class CustomSignUpForm extends StatelessWidget {
         if (state is AuthErrorState) {
           customShowSnackBar(context, state);
         } else if (state is AuthSuccessState) {
-          customToast();
+          customToast('Account Created Successfully!');
           customReplacementNavigate(context, '/homeView');
         }
       },

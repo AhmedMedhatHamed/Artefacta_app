@@ -1,4 +1,7 @@
+import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
+import 'package:artefacta_app/core/utils/app_functions/custom_snackbar.dart';
+import 'package:artefacta_app/core/utils/app_functions/custom_toast.dart';
 import 'package:artefacta_app/core/utils/text_styles/text_styles.dart';
 import 'package:artefacta_app/core/widgets/custom_bttn.dart';
 import 'package:artefacta_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
@@ -13,8 +16,15 @@ class CustomSignInForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, builder) {},
-      builder: (context, builder) {
+      listener: (context, state) {
+        if(state is AuthErrorState){
+          customShowSnackBar(context, state);
+        } else if(state is AuthSuccessState){
+          customToast('Account confirmed!');
+          customReplacementNavigate(context, '/homeView');
+        }
+      },
+      builder: (context, state) {
         AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Form(
           key: authCubit.signInFormKey,
@@ -25,6 +35,7 @@ class CustomSignInForm extends StatelessWidget {
                 onChanged: (value) {
                   authCubit.emailAddress = value;
                 },
+                controller: authCubit.emailController,
                 labelText: 'Email Address',
                 prefixIcon: Icon(Icons.email),
                 keyboardType: TextInputType.emailAddress,
@@ -34,6 +45,7 @@ class CustomSignInForm extends StatelessWidget {
                 onChanged: (value) {
                   authCubit.password = value;
                 },
+                controller: authCubit.passwordController,
                 labelText: 'Password',
                 prefixIcon: Icon(Icons.lock),
                 suffixIcon: IconButton(
@@ -57,6 +69,8 @@ class CustomSignInForm extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 102.0),
+              state is AuthLoadingState?
+              CupertinoActivityIndicator(color: AppColor.lightOrange):
               Align(
                 alignment: Alignment.topCenter,
                 child: CustomButton(

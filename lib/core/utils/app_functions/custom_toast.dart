@@ -2,9 +2,9 @@ import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void customToast() {
+void customToast(String msg) {
   Fluttertoast.showToast(
-    msg: 'Account Created Successfully!',
+    msg: msg,
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.BOTTOM,
     timeInSecForIosWeb: 2,
