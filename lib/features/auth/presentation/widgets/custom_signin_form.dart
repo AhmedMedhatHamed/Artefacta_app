@@ -2,13 +2,10 @@ import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
 import 'package:artefacta_app/core/utils/text_styles/text_styles.dart';
 import 'package:artefacta_app/core/widgets/custom_bttn.dart';
 import 'package:artefacta_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
-import 'package:artefacta_app/features/auth/presentation/widgets/custom_divider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'custom_icon_bttn.dart';
 import 'custom_textformfield.dart';
-import 'custom_welcome_text_widget.dart';
 
 class CustomSignInForm extends StatelessWidget {
   const CustomSignInForm({super.key});
@@ -24,13 +21,6 @@ class CustomSignInForm extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Center(
-                child: CustomWelcomeTextWidget(
-                  text: 'Welcome Back!',
-                  size: 24.0,
-                ),
-              ),
-              SizedBox(height: 48.0),
               CustomTextFormField(
                 onChanged: (value) {
                   authCubit.emailAddress = value;
@@ -74,20 +64,20 @@ class CustomSignInForm extends StatelessWidget {
                   onPressed: () {
                     if (authCubit.signInFormKey.currentState!.validate()) {
                       authCubit.signInWithEmailAndPassword();
+                      customReplacementNavigate(context, '/homeView',);
                     }
                   },
                 ),
               ),
-              SizedBox(height: 10.0),
-              CustomDivider(),
-              SizedBox(height: 10.0),
-              Align(
-                alignment: Alignment.topCenter,
-                child: CustomIconButton(
-                  text: 'Sign in with Google',
-                  onPressed: () {},
-                ),
-              ),
+              // CustomDivider(),
+              // SizedBox(height: 10.0),
+              // Align(
+              //   alignment: Alignment.topCenter,
+              //   child: CustomIconButton(
+              //     text: 'Sign in with Google',
+              //     onPressed: () {},
+              //   ),
+              // ),
             ],
           ),
         );
