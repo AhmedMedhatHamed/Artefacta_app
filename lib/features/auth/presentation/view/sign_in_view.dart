@@ -25,6 +25,7 @@ class SignIn extends StatelessWidget {
       },
       child: Scaffold(
         body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Column(
             children: [
               CustomDesign(),

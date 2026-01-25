@@ -17,9 +17,9 @@ class CustomSignInForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if(state is AuthErrorState){
+        if (state is AuthErrorState) {
           customShowSnackBar(context, state);
-        } else if(state is AuthSuccessState){
+        } else if (state is AuthSuccessState) {
           customToast('Account confirmed!');
           customReplacementNavigate(context, '/homeView');
         }
@@ -69,20 +69,25 @@ class CustomSignInForm extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 102.0),
-              state is AuthLoadingState?
-              CupertinoActivityIndicator(color: AppColor.lightOrange):
-              Align(
-                alignment: Alignment.topCenter,
-                child: CustomButton(
-                  text: 'Sign In',
-                  onPressed: () {
-                    if (authCubit.signInFormKey.currentState!.validate()) {
-                      authCubit.signInWithEmailAndPassword();
-                      customReplacementNavigate(context, '/homeView',);
-                    }
-                  },
-                ),
-              ),
+              state is AuthLoadingState
+                  ? Align(
+                      alignment: Alignment.topCenter,
+                      child: CupertinoActivityIndicator(
+                        color: AppColor.lightOrange,
+                      ),
+                    )
+                  : Align(
+                      alignment: Alignment.topCenter,
+                      child: CustomButton(
+                        text: 'Sign In',
+                        onPressed: () {
+                          if (authCubit.signInFormKey.currentState!
+                              .validate()) {
+                            authCubit.signInWithEmailAndPassword();
+                          }
+                        },
+                      ),
+                    ),
               // CustomDivider(),
               // SizedBox(height: 10.0),
               // Align(

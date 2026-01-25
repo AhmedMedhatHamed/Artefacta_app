@@ -13,10 +13,6 @@ class AuthCubit extends Cubit<AuthState> {
   final TextEditingController? emailController = TextEditingController();
   final TextEditingController? passwordController = TextEditingController();
 
-
-
-
-
   String? emailAddress;
   String? password;
   String? firstName;
@@ -56,8 +52,8 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signInWithEmailAndPassword() async {
+    emit(AuthLoadingState());
     try {
-      emit(AuthLoadingState());
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailAddress!,
         password: password!,
@@ -69,6 +65,8 @@ class AuthCubit extends Cubit<AuthState> {
       } else if (e.code == 'wrong-password') {
         emit(AuthErrorState('Wrong password provided for that user.'));
       }
+    }catch (e){
+      emit(AuthErrorState(e.toString()));
     }
   }
 }

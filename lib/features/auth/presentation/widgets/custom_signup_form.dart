@@ -96,7 +96,9 @@ class CustomSignUpForm extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               state is AuthLoadingState
-                  ? CupertinoActivityIndicator(color: AppColor.lightOrange)
+                  ? Align(
+                alignment: Alignment.topCenter,
+                  child: CupertinoActivityIndicator(color: AppColor.lightOrange))
                   : CustomButton(
                       backgroundColor: authCubit.isCheckBoxActive == false
                           ? Colors.grey
