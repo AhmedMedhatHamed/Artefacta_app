@@ -93,7 +93,7 @@ flutter:
         - asset: assets/fonts/Pacifico/Pacifico-Regular.ttf
     - family: Saira
       fonts:
-        - asset: assets/fonts/Saira/Saira-Italic-VariableFont_wdth,wght.ttf
+        - asset: assets/fonts/Saira/static/Saira-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

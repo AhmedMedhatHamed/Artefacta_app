@@ -1,7 +1,7 @@
-import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
 import 'package:artefacta_app/features/auth/presentation/widgets/terms_and%20_condition_widget.dart';
 import 'package:artefacta_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import 'package:artefacta_app/core/utils/app_functions/custom_snackbar.dart';
+import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
 import 'package:artefacta_app/core/utils/app_functions/custom_toast.dart';
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:artefacta_app/core/widgets/custom_bttn.dart';
@@ -97,8 +97,11 @@ class CustomSignUpForm extends StatelessWidget {
               const SizedBox(height: 80),
               state is AuthLoadingState
                   ? Align(
-                alignment: Alignment.topCenter,
-                  child: CupertinoActivityIndicator(color: AppColor.lightOrange))
+                      alignment: Alignment.topCenter,
+                      child: CupertinoActivityIndicator(
+                        color: AppColor.lightOrange,
+                      ),
+                    )
                   : CustomButton(
                       backgroundColor: authCubit.isCheckBoxActive == false
                           ? Colors.grey

@@ -30,9 +30,10 @@ class SignUp extends StatelessWidget {
                     txt1: 'Already have an account?',
                     txt2: 'Sign In',
                     onTap: () {
-                      customNavigate(context, '/signIn');
+                      customReplacementNavigate(context, '/signIn');
                     },
                   ),
+                  SizedBox(height: 16.0),
                 ],
               ),
             ),

@@ -17,5 +17,13 @@ class CheckBoxState extends AuthState{}
 
 class PasswordVisibilityState extends AuthState{}
 
+class SignInLoadingState extends AuthState{}
+class SignInSuccessState extends AuthState{}
+class SignInErrorState extends AuthState{
+  final String errorMsg;
+
+  SignInErrorState(this.errorMsg);
+}
+
 
 

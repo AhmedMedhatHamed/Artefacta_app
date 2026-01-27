@@ -1,11 +1,10 @@
 import 'package:artefacta_app/core/services/service_locator.dart';
-import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
 import 'package:artefacta_app/core/database/cache/cache_helpers.dart';
 import 'package:artefacta_app/core/utils/app_strings/app_strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../core/utils/text_styles/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'package:go_router/go_router.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -32,29 +31,43 @@ class _SplashViewState extends State<SplashView>
     _fadeAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
+    ).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
+    );
 
     _scaleAnimation = Tween<double>(
       begin: 0.8,
       end: 1.0,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+    ).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
+    );
 
     _controller.forward();
 
-    bool isOnBoardingVisited =
-        getIt<CacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
-    FirebaseAuth.instance.currentUser == null
-        ? customReplacementNavigate(context, '/signUp')
-        : customReplacementNavigate(context, '/homeView');
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _handleNavigation();
+        });
+      }
+    });
+  }
 
-    if (isOnBoardingVisited == true) {
-      Timer(const Duration(seconds: 5), () {
-        customReplacementNavigate(context, '/signUp');
-      });
+  void _handleNavigation() {
+    if (!mounted) return;
+
+    final bool isOnBoardingVisited =
+        getIt<CacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
+
+    final bool isLoggedIn =
+        FirebaseAuth.instance.currentUser != null;
+
+    if (!isOnBoardingVisited) {
+      context.go('/onBoarding');
+    } else if (!isLoggedIn) {
+      context.go('/signIn');
     } else {
-      Timer(const Duration(seconds: 5), () {
-        customReplacementNavigate(context, '/onBoarding');
-      });
+      context.go('/homeView');
     }
   }
 
@@ -80,10 +93,13 @@ class _SplashViewState extends State<SplashView>
                   AppStrings.appName,
                   style: CustomTextStyles.pacifico400styles64,
                 ),
-                const SizedBox(height: 8.0),
+                const SizedBox(height: 8),
                 const Text(
                   'History meets marketplace',
-                  style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                  ),
                 ),
               ],
             ),
