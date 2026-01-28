@@ -14,39 +14,29 @@ class SignInView extends StatelessWidget {
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
         slivers: [
-          SliverToBoxAdapter(
-            child: WelcomeBanner(),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(height: 32.0,),
-          ),
+          SliverToBoxAdapter(child: WelcomeBanner()),
+          SliverToBoxAdapter(child: SizedBox(height: 32.0)),
           SliverToBoxAdapter(
             child: Align(
               alignment: Alignment.bottomCenter,
-                child: CustomWelcomeTextWidget(text: 'Welcome Back!',)),
+              child: CustomWelcomeTextWidget(text: 'Welcome Back!'),
+            ),
           ),
+          SliverToBoxAdapter(child: SizedBox(height: 38.0)),
+          SliverToBoxAdapter(child: CustomSigninForm()),
+          SliverToBoxAdapter(child: SizedBox(height: 16.0)),
           SliverToBoxAdapter(
-            child: SizedBox(height: 38.0,),
+            child: HaveAccountWidget(
+              txt1: 'Don’t have an account?',
+              txt2: 'Sign Up',
+              onTap: () {
+                customReplacementNavigate(context, '/signUp');
+              },
+            ),
           ),
-          SliverToBoxAdapter(
-            child: CustomSigninForm(),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(height: 16.0,),
-          ),
-          SliverToBoxAdapter(
-            child: HaveAccountWidget(txt1: 'Don’t have an account?', txt2: 'Sign Up',onTap: (){
-              customReplacementNavigate(context, '/signUp');
-            },),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(height: 16.0,),
-          ),
+          SliverToBoxAdapter(child: SizedBox(height: 16.0)),
         ],
       ),
     );
   }
 }
-
-
-

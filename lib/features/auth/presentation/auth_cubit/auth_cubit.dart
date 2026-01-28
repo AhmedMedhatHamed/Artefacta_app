@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'auth_state.dart';
 
-
-
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
@@ -52,21 +50,23 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signInWithEmailAndPassword() async {
-    emit(AuthLoadingState());
+    emit(SignInLoadingState());
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailAddress!,
         password: password!,
       );
-      emit(AuthSuccessState());
+      emit(SignInSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        emit(AuthErrorState('User not found'));
+        emit(SignInErrorState('User not found'));
       } else if (e.code == 'wrong-password') {
-        emit(AuthErrorState('Wrong password provided for that user.'));
+        emit(SignInErrorState('Wrong password provided for that user.'));
+      } else {
+        emit(SignInErrorState('Check your email and password!'));
       }
-    }catch (e){
-      emit(AuthErrorState(e.toString()));
+    } catch (e) {
+      emit(SignInErrorState(e.toString()));
     }
   }
 }

@@ -16,6 +16,7 @@ class CustomSignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthErrorState) {
@@ -26,7 +27,6 @@ class CustomSignUpForm extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Form(
           key: authCubit.signupFormKey,
           child: Column(
