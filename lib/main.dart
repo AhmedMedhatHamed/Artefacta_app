@@ -1,6 +1,5 @@
 import 'package:artefacta_app/core/database/cache/cache_helpers.dart';
 import 'package:artefacta_app/core/services/service_locator.dart';
-import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'core/utils/app_functions/auth_state_changes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +18,8 @@ void main() async{
   await getIt<CacheHelper>().init();
 
   SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: AppColor.offWhite,
+     SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.light,
       statusBarBrightness: Brightness.dark,
     ),

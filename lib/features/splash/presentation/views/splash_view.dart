@@ -66,10 +66,13 @@ class _SplashViewState extends State<SplashView>
       context.go('/onBoarding');
     } else if (!isLoggedIn) {
       context.go('/signIn');
-    } else {
+    } else if(FirebaseAuth.instance.currentUser!.emailVerified) {
       context.go('/homeView');
     }
-  }
+      else{
+        context.go('/signIn');
+      }
+    }
 
   @override
   void dispose() {

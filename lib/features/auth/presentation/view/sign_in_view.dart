@@ -10,33 +10,47 @@ class SignInView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        physics: BouncingScrollPhysics(),
-        slivers: [
-          SliverToBoxAdapter(child: WelcomeBanner()),
-          SliverToBoxAdapter(child: SizedBox(height: 32.0)),
-          SliverToBoxAdapter(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: CustomWelcomeTextWidget(text: 'Welcome Back!'),
+      return Scaffold(
+        body: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            const SliverToBoxAdapter(
+              child: WelcomeBanner(),
             ),
-          ),
-          SliverToBoxAdapter(child: SizedBox(height: 38.0)),
-          SliverToBoxAdapter(child: CustomSigninForm()),
-          SliverToBoxAdapter(child: SizedBox(height: 16.0)),
-          SliverToBoxAdapter(
-            child: HaveAccountWidget(
-              txt1: 'Don’t have an account?',
-              txt2: 'Sign Up',
-              onTap: () {
-                customReplacementNavigate(context, '/signUp');
-              },
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 32.0),
             ),
-          ),
-          SliverToBoxAdapter(child: SizedBox(height: 16.0)),
-        ],
-      ),
-    );
+            const SliverToBoxAdapter(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: CustomWelcomeTextWidget(
+                  text: 'Welcome Back!',
+                ),
+              ),
+            ),
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 38.0),
+            ),
+            const SliverToBoxAdapter(
+              child: CustomSigninForm(),
+            ),
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 16.0),
+            ),
+            SliverToBoxAdapter(
+              child: HaveAccountWidget(
+                txt1: 'Don’t have an account?',
+                txt2: 'Sign Up',
+                onTap: () {
+                  customReplacementNavigate(context, '/signUp');
+                },
+              ),
+            ),
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 16.0),
+            ),
+          ],
+        ),
+      );
   }
 }

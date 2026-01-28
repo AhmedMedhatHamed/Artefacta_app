@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 abstract class CustomTextStyles{
   static final pacifico400styles64 = TextStyle(
-    fontSize: 40.0,
+    fontSize: 64.0,
     fontWeight: FontWeight.w400,
     color: AppColor.deepOrange,
     fontFamily: 'Pacifico',

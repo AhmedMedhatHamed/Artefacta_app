@@ -1,8 +1,8 @@
 import 'package:artefacta_app/core/utils/text_styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
-class TermsAndConditionWidget extends StatelessWidget {
-  const TermsAndConditionWidget({super.key});
+class TermsAndConditions extends StatelessWidget {
+  const TermsAndConditions({super.key});
 
   @override
   Widget build(BuildContext context) {

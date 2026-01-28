@@ -22,8 +22,8 @@ class CustomSignUpForm extends StatelessWidget {
         if (state is AuthErrorState) {
           customShowSnackBar(context, state);
         } else if (state is AuthSuccessState) {
-          customToast('Account Created Successfully!');
-          customReplacementNavigate(context, '/homeView');
+          customToast('Please Verify Your Account');
+          customReplacementNavigate(context, '/signIn');
         }
       },
       builder: (context, state) {
@@ -92,7 +92,7 @@ class CustomSignUpForm extends StatelessWidget {
                 ),
               ),
               Row(
-                children: const [CustomCheckbox(), TermsAndConditionWidget()],
+                children: const [CustomCheckbox(), TermsAndConditions()],
               ),
               const SizedBox(height: 80),
               state is AuthLoadingState
