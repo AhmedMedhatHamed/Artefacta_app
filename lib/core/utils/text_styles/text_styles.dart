@@ -32,4 +32,11 @@ abstract class CustomTextStyles{
     color: Colors.white,
     fontFamily: 'Saira',
   );
+
+  static final poppins400styles14 = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w400,
+    color: Color(0xff6F6460),
+    fontFamily: 'Poppins',
+  );
 }

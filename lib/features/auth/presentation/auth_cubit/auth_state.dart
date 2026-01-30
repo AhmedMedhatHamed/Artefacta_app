@@ -25,5 +25,12 @@ class SignInErrorState extends AuthState{
   SignInErrorState(this.errorMsg);
 }
 
+class ForgetPasswordLoadingState extends AuthState{}
+class ForgetPasswordSuccessState extends AuthState{}
+class ForgetPasswordErrorState extends AuthState{
+  final String errorMsg;
+
+  ForgetPasswordErrorState(this.errorMsg);
+}
 
 

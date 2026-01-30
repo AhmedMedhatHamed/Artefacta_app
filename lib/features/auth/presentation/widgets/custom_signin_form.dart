@@ -2,6 +2,7 @@ import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:artefacta_app/core/utils/app_functions/custom_navigate.dart';
 import 'package:artefacta_app/core/utils/app_functions/custom_snackbar.dart';
 import 'package:artefacta_app/core/utils/app_functions/custom_toast.dart';
+import 'package:artefacta_app/core/utils/text_styles/text_styles.dart';
 import 'package:artefacta_app/core/widgets/custom_bttn.dart';
 import 'package:artefacta_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -70,6 +71,18 @@ class CustomSigninForm extends StatelessWidget {
                       onPressed: () {
                         authCubit.togglePasswordVisibility();
                       },
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: GestureDetector(
+                    onTap: (){
+                      customReplacementNavigate(context, '/forgetPassword');
+                    },
+                    child: Text(
+                      'Forget Password?',
+                      style: CustomTextStyles.poppins600styles12,
                     ),
                   ),
                 ),

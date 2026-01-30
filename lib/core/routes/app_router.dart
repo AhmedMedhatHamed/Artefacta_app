@@ -11,10 +11,7 @@ import 'package:go_router/go_router.dart';
 final GoRouter router = GoRouter(
   initialLocation: '/',
   routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const SplashView(),
-    ),
+    GoRoute(path: '/', builder: (context, state) => const SplashView()),
     GoRoute(
       path: '/onBoarding',
       builder: (context, state) => const OnboardingView(),
@@ -22,25 +19,22 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/signIn',
       builder: (context, state) =>
-          BlocProvider(
-            create: (context) => AuthCubit(),
-            child: SignInView(),
-          ),
+          BlocProvider(create: (context) => AuthCubit(), child: SignInView()),
     ),
     GoRoute(
       path: '/signUp',
-      builder: (context, state) =>  BlocProvider(
-        create : (context) => AuthCubit(),
-          child: SignUp()),
+      builder: (context, state) =>
+          BlocProvider(create: (context) => AuthCubit(), child: SignUp()),
     ),
 
-    GoRoute(
-      path: '/homeView',
-      builder: (context, state) =>  HomeView(),
-    ),
+    GoRoute(path: '/homeView', builder: (context, state) => HomeView()),
+
     GoRoute(
       path: '/forgetPassword',
-      builder: (context, state) =>  ForgetPasswordView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => AuthCubit(),
+        child: ForgetPasswordView(),
+      ),
     ),
   ],
 );
