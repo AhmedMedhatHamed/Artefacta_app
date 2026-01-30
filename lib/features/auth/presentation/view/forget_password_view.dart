@@ -9,31 +9,36 @@ class ForgetPasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(child: SizedBox(height: 108.0)),
-          SliverToBoxAdapter(
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: CustomWelcomeTextWidget(
-                text: 'Forgot Password',
-                size: 24.0,
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: SizedBox(height: 108.0)),
+            SliverToBoxAdapter(
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: CustomWelcomeTextWidget(
+                  text: 'Forgot Password',
+                  size: 24.0,
+                ),
               ),
             ),
-          ),
-          SliverToBoxAdapter(child: SizedBox(height: 40.0)),
-          SliverToBoxAdapter(child: ForgetPasswordImage()),
-          SliverToBoxAdapter(child: SizedBox(height: 24.0)),
-          SliverToBoxAdapter(
-            child: ForgetPasswordSubtitle(
-              text:
-                  'Enter your registered email below to receive\npassword reset instruction',
+            SliverToBoxAdapter(child: SizedBox(height: 40.0)),
+            SliverToBoxAdapter(child: ForgetPasswordImage()),
+            SliverToBoxAdapter(child: SizedBox(height: 24.0)),
+            SliverToBoxAdapter(
+              child: ForgetPasswordSubtitle(
+                text:
+                    'Enter your registered email below to receive\npassword reset instruction',
+              ),
             ),
-          ),
-          SliverToBoxAdapter(child: SizedBox(height: 41.0)),
-          SliverToBoxAdapter(child: CustomForgetPasswordForm()),
-        ],
+            SliverToBoxAdapter(child: SizedBox(height: 41.0)),
+            SliverToBoxAdapter(child: CustomForgetPasswordForm()),
+          ],
+        ),
       ),
     );
   }

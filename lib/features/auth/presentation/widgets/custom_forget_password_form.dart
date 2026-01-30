@@ -48,8 +48,8 @@ class CustomForgetPasswordForm extends StatelessWidget {
                         ),
                       )
                     : CustomButton(
-                        backgroundColor: AppColor.deepOrange,
-                        text: 'Send Verification Code',
+                        backgroundColor: AppColor.deepOrange800,
+                        text: 'Send link to reset password',
                         onPressed: () {
                           if (authCubit.forgetPasswordFormKey.currentState!
                               .validate()) {
