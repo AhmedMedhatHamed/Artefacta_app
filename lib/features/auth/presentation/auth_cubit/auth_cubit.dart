@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'auth_state.dart';
@@ -30,7 +31,7 @@ class AuthCubit extends Cubit<AuthState> {
         password: password!,
       );
 
-      await addUsers();
+      await addUserProfile();
       await verifiedEmail();
 
       emit(AuthSuccessState());
@@ -44,6 +45,9 @@ class AuthCubit extends Cubit<AuthState> {
       }
     } catch (e) {
       emit(AuthErrorState(e.toString()));
+      if (kDebugMode) {
+        print(e.toString());
+      }
     }
   }
 
@@ -92,13 +96,13 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> addUsers() async {
-    CollectionReference users =  FirebaseFirestore.instance.collection("users");
-    await users
-        .add({
+  Future<void> addUserProfile() async {
+    CollectionReference users = FirebaseFirestore.instance.collection("users");
+    await users.add({
+      "email": emailAddress,
       "first_name": firstName,
       "last_name": lastName,
-      "email": emailAddress,
-        });
+    });
   }
+
 }
