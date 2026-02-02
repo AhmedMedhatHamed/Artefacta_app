@@ -44,7 +44,7 @@ class CustomForgetPasswordForm extends StatelessWidget {
                     ? Align(
                         alignment: Alignment.topCenter,
                         child: CupertinoActivityIndicator(
-                          color: AppColor.deepOrange,
+                          color: AppColor.deepOrange800,
                         ),
                       )
                     : CustomButton(
