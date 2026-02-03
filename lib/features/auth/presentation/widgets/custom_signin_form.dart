@@ -23,7 +23,7 @@ class CustomSigninForm extends StatelessWidget {
           customShowSnackBarTwo(context, state);
         } else if (state is SignInSuccessState) {
           if (FirebaseAuth.instance.currentUser!.emailVerified) {
-            customReplacementNavigate(context, '/homeView');
+            customReplacementNavigate(context, '/navBar');
             customToast('Welcome!');
           } else {
             customToast('Please Verify Your Account');

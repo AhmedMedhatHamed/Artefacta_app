@@ -67,7 +67,7 @@ class _SplashViewState extends State<SplashView>
     } else if (!isLoggedIn) {
       context.go('/signIn');
     } else if(FirebaseAuth.instance.currentUser!.emailVerified) {
-      context.go('/homeView');
+      context.go('/navBar');
     }
       else{
         context.go('/signIn');
