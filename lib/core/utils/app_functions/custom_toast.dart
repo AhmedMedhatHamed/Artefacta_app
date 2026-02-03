@@ -7,9 +7,10 @@ void customToast(String msg) {
     msg: msg,
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.BOTTOM,
-    timeInSecForIosWeb: 2,
-    backgroundColor: AppColor.primaryColor,
-    textColor: Colors.white,
+    timeInSecForIosWeb: 4,
+    backgroundColor: AppColor.offWhite,
+    textColor: Colors.black,
     fontSize: 16.0,
+    fontAsset: 'Poppins',
   );
 }

@@ -17,10 +17,10 @@ class CustomForgetPasswordForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if(state is ForgetPasswordSuccessState){
-          customToast('Please Check Your Email Messages!',);
+          customToast('Check Your Email Messages!',);
           customReplacementNavigate(context, '/signIn');
         }else if(state is ForgetPasswordErrorState){
-          customToast('Sorry you can try this in another time!');
+          customToast('Please try again later!');
         }
       },
       builder: (context, state) {
@@ -40,7 +40,7 @@ class CustomForgetPasswordForm extends StatelessWidget {
                   prefixIcon: const Icon(Icons.email_outlined),
                 ),
                 SizedBox(height: 120.0),
-                state is SignInLoadingState
+                state is ForgetPasswordLoadingState
                     ? Align(
                         alignment: Alignment.topCenter,
                         child: CupertinoActivityIndicator(

@@ -86,7 +86,7 @@ class CustomSigninForm extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 102),
+                SizedBox(height: 100.0,),
                 state is SignInLoadingState
                     ? Align(
                         alignment: Alignment.topCenter,

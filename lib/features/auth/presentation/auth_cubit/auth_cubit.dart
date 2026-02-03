@@ -51,16 +51,6 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  void updateStateOfCheckBox(dynamic newValue) {
-    isCheckBoxActive = newValue;
-    emit(CheckBoxState());
-  }
-
-  void togglePasswordVisibility() {
-    isObscure = !isObscure!;
-    emit(PasswordVisibilityState());
-  }
-
   Future<void> signInWithEmailAndPassword() async {
     emit(SignInLoadingState());
     try {
@@ -103,6 +93,16 @@ class AuthCubit extends Cubit<AuthState> {
       "first_name": firstName,
       "last_name": lastName,
     });
+  }
+
+  void updateStateOfCheckBox(dynamic newValue) {
+    isCheckBoxActive = newValue;
+    emit(CheckBoxState());
+  }
+
+  void togglePasswordVisibility() {
+    isObscure = !isObscure!;
+    emit(PasswordVisibilityState());
   }
 
 }
