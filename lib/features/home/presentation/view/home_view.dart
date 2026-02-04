@@ -1,7 +1,8 @@
-import 'package:artefacta_app/core/widgets/custom_header.dart';
-import 'package:artefacta_app/features/home/presentation/widgets/custom_app_bar.dart';
 import 'package:artefacta_app/features/home/presentation/widgets/historical_characters_list_view.dart';
 import 'package:artefacta_app/features/home/presentation/widgets/historical_periods.dart';
+import 'package:artefacta_app/features/home/presentation/widgets/custom_app_bar.dart';
+import 'package:artefacta_app/features/home/presentation/widgets/ancient_wars.dart';
+import 'package:artefacta_app/core/widgets/custom_header.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -13,8 +14,9 @@ class HomeView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
           slivers: [
-            const SliverToBoxAdapter(child: SizedBox(height: 72.0)),
+            const SliverToBoxAdapter(child: SizedBox(height: 30.0)),
             const SliverToBoxAdapter(child: CustomAppBarWidget()),
             const SliverToBoxAdapter(child: SizedBox(height: 32.0)),
             const SliverToBoxAdapter(
@@ -34,17 +36,12 @@ class HomeView extends StatelessWidget {
               ),
             ),
             const SliverToBoxAdapter(child: SizedBox(height: 32.0)),
-            const SliverToBoxAdapter(
-              child: CustomHeader(text: 'Ancient Wars'),
-            ),
+            const SliverToBoxAdapter(child: CustomHeader(text: 'Ancient Wars')),
+            const SliverToBoxAdapter(child: SizedBox(height: 16.0)),
+            SliverToBoxAdapter(child: AncientWars()),
           ],
         ),
       ),
     );
   }
 }
-
-
-
-
-

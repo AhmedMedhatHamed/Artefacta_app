@@ -1,4 +1,3 @@
-
 import 'package:artefacta_app/core/utils/app_color/app_color.dart';
 import 'package:artefacta_app/core/utils/text_styles/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -25,27 +24,20 @@ class HistoricalCharacterItem extends StatelessWidget {
           BoxShadow(
             color: AppColor.grey,
             blurRadius: 5,
-            offset:  Offset(0, 2.5),
+            offset: Offset(0, 2.5),
           ),
         ],
       ),
       child: Column(
         children: [
-          Image.asset(
-            image,
-            height: 96.0,
-            width: 74.0,
-            fit: BoxFit.fill,
-          ),
+          Image.asset(image, height: 96.0, width: 74.0, fit: BoxFit.fill),
           SizedBox(height: 11.0),
           Text(
             text,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
-            style: CustomTextStyles.poppins500styles16.copyWith(
-              fontSize: 14.0,
-            ),
+            style: CustomTextStyles.poppins500styles16.copyWith(fontSize: 14.0),
           ),
         ],
       ),

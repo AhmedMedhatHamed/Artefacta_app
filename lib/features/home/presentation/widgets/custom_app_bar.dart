@@ -11,9 +11,7 @@ class CustomAppBarWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Icon(
-          Icons.menu, color: AppColor.maroonColor,
-        ),
+        Icon(Icons.menu, color: AppColor.maroonColor),
         Text(
           AppStrings.appName,
           style: CustomTextStyles.pacifico400styles64.copyWith(fontSize: 22.0),

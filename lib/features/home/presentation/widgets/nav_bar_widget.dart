@@ -20,7 +20,7 @@ class NavBarWidget extends StatelessWidget {
       screens: _buildScreens(),
       items: _navBarsItems(),
       navBarStyle: NavBarStyle.neumorphic,
-      backgroundColor:AppColor.primaryColor,
+      backgroundColor: AppColor.primaryColor,
       navBarHeight: 65,
       padding: EdgeInsets.all(8.0),
       bottomScreenMargin: 0,
@@ -46,20 +46,13 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
         color: AppColor.lightGrey,
         size: 35.0,
       ),
-      inactiveIcon: const Icon(
-        CupertinoIcons.house,
-        color: AppColor.offWhite,
-      ),
+      inactiveIcon: const Icon(CupertinoIcons.house, color: AppColor.offWhite),
     ),
 
     PersistentBottomNavBarItem(
-      icon: Icon(
-          Icons.shopping_cart,
-          color: AppColor.lightGrey,
-        size: 35.0,
-      ),
+      icon: Icon(Icons.shopping_cart, color: AppColor.lightGrey, size: 35.0),
       inactiveIcon: const Icon(
-       CupertinoIcons.shopping_cart,
+        CupertinoIcons.shopping_cart,
         color: AppColor.offWhite,
       ),
     ),
@@ -68,12 +61,9 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       icon: Icon(
         CupertinoIcons.search_circle_fill,
         color: AppColor.lightGrey,
-        size:35.0,
+        size: 35.0,
       ),
-      inactiveIcon: const Icon(
-        CupertinoIcons.search,
-        color: AppColor.offWhite,
-      ),
+      inactiveIcon: const Icon(CupertinoIcons.search, color: AppColor.offWhite),
     ),
 
     PersistentBottomNavBarItem(
@@ -82,10 +72,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
         color: AppColor.lightGrey,
         size: 35.0,
       ),
-      inactiveIcon: const Icon(
-        CupertinoIcons.person,
-        color: AppColor.offWhite,
-      ),
+      inactiveIcon: const Icon(CupertinoIcons.person, color: AppColor.offWhite),
     ),
   ];
 }
