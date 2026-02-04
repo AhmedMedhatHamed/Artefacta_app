@@ -40,7 +40,7 @@ class CustomSignUpForm extends StatelessWidget {
                   controller: authCubit.firstNameController,
                   labelText: 'First Name',
                   keyboardType: TextInputType.name,
-                  prefixIcon: const Icon(CupertinoIcons.person_alt_circle),
+                  prefixIcon: const Icon(CupertinoIcons.person),
                 ),
               ),
               Padding(
@@ -52,7 +52,7 @@ class CustomSignUpForm extends StatelessWidget {
                   controller: authCubit.lastNameController,
                   labelText: 'Last Name',
                   keyboardType: TextInputType.name,
-                  prefixIcon: const Icon(CupertinoIcons.person_alt_circle),
+                  prefixIcon: const Icon(CupertinoIcons.person_crop_circle),
                 ),
               ),
               Padding(
@@ -105,7 +105,7 @@ class CustomSignUpForm extends StatelessWidget {
                   : CustomButton(
                       backgroundColor: authCubit.isCheckBoxActive == false
                           ? Colors.grey
-                          : AppColor.lightOrange,
+                          : AppColor.primaryColor,
                       text: 'Sign Up',
                       onPressed: () {
                         if (authCubit.isCheckBoxActive == true) {

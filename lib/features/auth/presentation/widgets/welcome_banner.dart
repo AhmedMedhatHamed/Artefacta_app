@@ -13,7 +13,7 @@ class WelcomeBanner extends StatelessWidget {
       width: double.infinity,
       height: 290.0,
       decoration: BoxDecoration(
-        color: AppColor.deepOrange,
+        color: AppColor.primaryColor,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,

@@ -23,7 +23,7 @@ class CustomNavBar extends StatelessWidget {
           style: CustomTextStyles.pacifico400styles64.copyWith(
             fontSize: 16.0,
             fontFamily: 'poppins',
-            color: AppColor.lightOrange,
+            color: AppColor.primaryColor,
           ),
         ),
       ),

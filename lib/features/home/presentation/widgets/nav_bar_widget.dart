@@ -19,15 +19,15 @@ class NavBarWidget extends StatelessWidget {
       controller: _controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
-      navBarStyle: NavBarStyle.style1,
-      backgroundColor: Colors.transparent,
-      navBarHeight: 60,
+      navBarStyle: NavBarStyle.neumorphic,
+      backgroundColor:AppColor.primaryColor,
+      navBarHeight: 65,
       padding: EdgeInsets.all(8.0),
       bottomScreenMargin: 0,
       decoration: const NavBarDecoration(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(10.0),
-          topRight: Radius.circular(10.0),
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
         ),
       ),
     );
@@ -43,38 +43,48 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
     PersistentBottomNavBarItem(
       icon: Icon(
         CupertinoIcons.house_fill,
-        color: AppColor.lightOrange, // active
+        color: AppColor.lightGrey,
+        size: 35.0,
       ),
       inactiveIcon: const Icon(
         CupertinoIcons.house,
-        color: AppColor.primaryColor, // inactive
+        color: AppColor.offWhite,
       ),
     ),
 
     PersistentBottomNavBarItem(
-      icon: Icon(Icons.shopping_cart, color: AppColor.lightOrange),
+      icon: Icon(
+          Icons.shopping_cart,
+          color: AppColor.lightGrey,
+        size: 35.0,
+      ),
       inactiveIcon: const Icon(
        CupertinoIcons.shopping_cart,
-        color: AppColor.primaryColor,
+        color: AppColor.offWhite,
       ),
     ),
 
     PersistentBottomNavBarItem(
       icon: Icon(
         CupertinoIcons.search_circle_fill,
-        color: AppColor.lightOrange,
+        color: AppColor.lightGrey,
+        size:35.0,
       ),
       inactiveIcon: const Icon(
         CupertinoIcons.search,
-        color: AppColor.primaryColor,
+        color: AppColor.offWhite,
       ),
     ),
 
     PersistentBottomNavBarItem(
-      icon: Icon(CupertinoIcons.person_crop_circle, color: AppColor.lightOrange),
+      icon: Icon(
+        CupertinoIcons.person_crop_circle,
+        color: AppColor.lightGrey,
+        size: 35.0,
+      ),
       inactiveIcon: const Icon(
         CupertinoIcons.person,
-        color: AppColor.primaryColor,
+        color: AppColor.offWhite,
       ),
     ),
   ];

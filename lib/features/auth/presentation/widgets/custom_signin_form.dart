@@ -95,7 +95,7 @@ class CustomSigninForm extends StatelessWidget {
                         ),
                       )
                     : CustomButton(
-                        backgroundColor: AppColor.deepOrange,
+                        backgroundColor: AppColor.primaryColor,
                         text: 'Sign in',
                         onPressed: () {
                           if (authCubit.signInFormKey.currentState!
